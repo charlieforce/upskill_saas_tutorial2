@@ -2,15 +2,18 @@
 //Document ready.
 $(document).on('turbolinks:load', function(){
   var theForm = $('#pro_form');
-  var submitBtn = $('#form-submit-btn');
+  var submitBtn = $('#form-signup-btn');
+  
   //Set Stripe public key.
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
+  
   //When user clicks form submit btn,
   submitBtn.click(function(event){
     //prevent default submission behavior.
     event.preventDefault();
     //this will change the text of the Sign Up button to processing and then grey
     submitBtn.val("Processing").prop('disabled', true);
+    
     //Collect the credit card fields.
     var ccNum = $('#card_number').val(),
         cvcNum = $('#card_code').val(),
